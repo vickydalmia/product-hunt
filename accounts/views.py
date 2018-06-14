@@ -17,7 +17,7 @@ def signup(request):
             except User.DoesNotExist:
                 u = User.objects.create_user(request.POST['username'], password=request.POST['userpassword'])
                 auth.login(request, u)
-                return redirect('home')
+                return redirect('createproduct')
         else:
             return render(request, 'accounts/signup.html', {'error': 'Password Validaton Failed'})
     else:
@@ -30,7 +30,7 @@ def login(request):
         user = auth.authenticate(username=request.POST['username'], password=request.POST['userpassword'])
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            return redirect('createproduct')
         else:
             return render(request, 'accounts/login.html', {'error':'Username or password is incorrect or doesn\'t exist'})
     else:

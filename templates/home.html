@@ -1,4 +1,16 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<h1>Hi</h1>
+{% for product in products.all %}
+<div class="media mt-5 mb-5">
+    <img class="col-2 mr-3" src="{{product.icon.url}}" alt="{{product.title}}">
+    <div class="col-8 media-body">
+        <h5 class="mt-0">{{product.title}}</h5>
+        <p>{{product.body}}</p>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-danger btn-block"><span class="oi oi-caret-top"></span>   UpVote {{product.votes_total}}</button>
+    </div>
+</div>
+<hr>
+{% endfor %}
 {% endblock %}

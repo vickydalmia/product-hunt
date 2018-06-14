@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+<form method="POST" action="{% url 'createproduct' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Product Title</label>
+        <input class="form-control" id="title" type="text" placeholder="Your New Product Title" name="title">
+    </div>
+    <div class="form-group">
+        <label for="websiteurl">Product Website Url</label>
+        <input class="form-control" id="websiteurl" type="text" placeholder="Enter Url Without http://or https://" name="url">
+    </div>
+    <div class="form-group">
+        <label for="productbody">Write Something About Product</label>
+        <textarea class="form-control" id="productbody" rows="6" name="body"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="icon">Product Icon</label>
+        <input type="file" class="form-control-file" id="icon" name="icon">
+    </div>
+    <div class="form-group">
+        <label for="image">Product Image</label>
+        <input type="file" class="form-control-file" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-danger">Create Product</button>           
+</form>
+
+{% endblock %}
