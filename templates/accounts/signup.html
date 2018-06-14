@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block content %}
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{ error }}
+</div>
+{% endif %}
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="emailInput">Username</label>
+      <input type="text" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter Username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="userpassword">
+    </div>
+    <div class="form-group">
+        <label for="confirmPasswordInput">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Confirm Password" name="confirmuserpassword">
+    </div>
+    
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+{% endblock %}
